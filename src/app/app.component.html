@@ -1,0 +1,184 @@
+<style>
+  :host {
+    --bright-blue: oklch(51.01% 0.274 263.83);
+    --electric-violet: oklch(53.18% 0.28 296.97);
+    --french-violet: oklch(47.66% 0.246 305.88);
+    --vivid-pink: oklch(69.02% 0.277 332.77);
+    --hot-red: oklch(61.42% 0.238 15.34);
+    --orange-red: oklch(63.32% 0.24 31.68);
+    --gray-900: oklch(19.37% 0.006 300.98);
+    --gray-700: oklch(36.98% 0.014 302.71);
+    --gray-400: oklch(70.9% 0.015 304.04);
+
+    --gradient-vertical: linear-gradient(180deg, var(--orange-red), var(--vivid-pink), var(--electric-violet));
+    --gradient-horizontal: linear-gradient(90deg, var(--orange-red), var(--vivid-pink), var(--electric-violet));
+
+    font-family: "Inter", Arial, sans-serif;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1 {
+    font-size: 3.125rem;
+    color: var(--gray-900);
+    font-weight: 500;
+    line-height: 100%;
+    letter-spacing: -0.125rem;
+    margin: 0;
+    font-family: "Inter Tight", sans-serif;
+  }
+
+  p {
+    margin: 0;
+    color: var(--gray-700);
+  }
+
+  main {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    box-sizing: inherit;
+    position: relative;
+    background: var(--gradient-vertical);
+  }
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 3rem;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .left-side {
+    flex: 1;
+    padding-right: 1rem;
+  }
+
+  .right-side {
+    flex: 1;
+    padding-left: 1rem;
+  }
+
+  .divider {
+    width: 1px;
+    background: var(--gradient-horizontal);
+    margin: 0 1rem;
+  }
+
+  .pill-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .pill {
+    display: flex;
+    align-items: center;
+    background: var(--bright-blue);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+
+  .pill:hover {
+    background: var(--vivid-pink);
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .social-links a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--gray-400);
+    transition: background 0.3s ease;
+  }
+
+  .social-links a:hover {
+    background: var(--gray-900);
+  }
+
+  .social-links svg {
+    fill: white;
+    width: 20px;
+    height: 20px;
+    transition: fill 0.3s ease;
+  }
+
+  .social-links a:hover svg {
+    fill: var(--bright-blue);
+  }
+
+  @media (max-width: 650px) {
+    .content {
+      flex-direction: column;
+    }
+    
+    .divider {
+      height: 1px;
+      width: 100%;
+      background: var(--gradient-vertical);
+      margin-top: 1rem;
+    }
+
+    .pill-group {
+      align-items: center;
+    }
+  }
+</style>
+<main class="main">
+  <div class="content">
+    <div class="left-side">
+      <h1>Bienvenido, {{ title }}</h1>
+      <p>Donde el deporte cobra vida <span class="highlight">🎉</span></p>
+      <p>Sportifyt es una plataforma diseñada para los amantes del deporte, brindando información actualizada, resultados en tiempo real, noticias exclusivas y análisis de tus disciplinas deportivas favoritas. Nuestro objetivo es conectar a los fanáticos con el mundo del deporte en un solo lugar.</p>
+    </div>
+    <div class="divider" role="separator" aria-label="Divider"></div>
+    <div class="right-side">
+      <div class="pill-group">
+        @for (item of [
+          { title: 'Sportifyt', link: 'https://galvarro20.github.io/TINDIVIDUAL/proyecto4.html' },
+          { title: 'Pagina Principal', link: 'https://sites.google.com/view/rckw/pagina-principal' },
+          { title: 'Instagram', link: 'https://www.instagram.com/mgalvarroerick/profilecard/?igsh=MW03aHIxYm9yenhqaA==' },
+          { title: 'Productos que ofrezco', link: 'https://wa.me/c/59173675666' },
+          { title: 'Contactame', link: 'https://wa.me/59173675666' },
+        ]; track item.title) {
+          <a class="pill" [href]="item.link" target="_blank" rel="noopener">
+            <span>{{ item.title }}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" height="14" width="14" fill="currentColor">
+              <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"/>
+            </svg>
+          </a>
+        }
+      </div>
+
+      <div class="social-links">
+        <a href="https://github.com/Galvarro20/tarea1d" aria-label="Github" target="_blank" rel="noopener">
+          <svg width="25" height="24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.3047 0C5.50634 0 0 5.50942 0 12.3047C0 17.7423 3.52529 22.3535 8.41332 23.9787C9.02856 24.0946 9.25414 23.7142 9.25414 23.3871C9.25414 23.0949 9.24389 22.3207 9.23876 21.2953C5.81601 22.0377 5.09414 19.6444 5.09414 19.6444C4.53427 18.2243 3.72524 17.8449 3.72524 17.8449C2.61064 17.082 3.81137 17.0973 3.81137 17.0973C5.04697 17.1835 5.69604 18.3647 5.69604 18.3647C6.79321 20.2463 8.57636 19.7029 9.27978 19.3881C9.39052 18.5924 9.70736 18.0499 10.0591 17.7423C7.32641 17.4347 4.45429 16.3765 4.45429 11.6618C4.45429 10.3185 4.9311 9.22133 5.72065 8.36C5.58222 8.04931 5.16694 6.79833 5.82831 5.10337C5.82831 5.10337 6.85883 4.77319 9.2121 6.25703C9.96024 6.13194 10.7305 6.07679 11.4842 6.07148C12.2383 6.07679 13.007 6.13194 13.7557 6.25703C16.1083 4.77319 17.1387 5.10337 17.1387 5.10337C17.8001 6.79833 17.3848 8.04931 17.2464 8.36C18.036 9.22133 18.5128 10.3185 18.5128 11.6618C18.5128 16.3765 15.6406 17.4347 12.9079 17.7423C13.2596 18.0499 13.5765 18.5924 13.6872 19.3881C14.3904 19.7029 16.1736 20.2463 17.2708 18.3647C17.2708 18.3647 17.9199 17.1835 19.1555 17.0973C19.1555 17.0973 20.3563 17.082 19.2417 17.8449C19.2417 17.8449 18.4327 18.2243 17.8728 19.6444C17.8728 19.6444 17.1509 22.0377 13.7282 21.2953C13.7231 22.3207 13.7129 23.0949 13.7129 23.3871C13.7129 23.7142 13.9385 24.0946 14.5537 23.9787C19.4418 22.3535 22.9671 17.7423 22.9671 12.3047C22.9671 5.50942 17.4607 0 12.3047 0Z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</main>
